@@ -18,5 +18,3 @@ Publications
 NL-CALIC Soft Decoding Using Strict Constrained Wide-Activated Recurrent Residual Network,*IEEE TRANSACTIONS ON IMAGE PROCESSING* (**TIP**), Yi Niu*, ***Chang Liu***, MingMing Ma, Fu Li, ZhiWen Chen, Guangming Shi. ***(Published on 2021.12)*** 
 
 Retinex-guided Channel-grouping based Patch Swap for Arbitrary Style Transfer, *IEEE TRANSACTIONS ON MULTIMEDIA* (**TMM**), ***Chang Liu***, Mingming Ma, Yi Niu*, Fu Li, Guangming Shi. ***(Under review)***  
-
-
