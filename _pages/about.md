@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-Ciao! I'm a 2nd-year PhD student in school of AI at Xidian University, Xian, China. My supervisor is [Prof. Niu Yi](https://web.xidian.edu.cn/niuyi/index.html). My current research interest is continual learning in semantic segmentation. Now I'm a visiting student of [LTTM](https://web.xidian.edu.cn/niuyi/index.html) at [UNIPD](https://www.unipd.it/) supported by [China scholarship Council (CSC)](https://www.chinesescholarshipcouncil.com/). 
+Ciao! I'm a 2nd-year PhD student in school of AI at Xidian University, Xian, China. My supervisor is [Prof. Niu Yi](https://web.xidian.edu.cn/niuyi/index.html). My current research interest is continual learning in semantic segmentation. Now I'm a visiting student of [LTTM](https://web.xidian.edu.cn/niuyi/index.html) at [UNIPD](https://www.unipd.it/) supported by [China scholarship Council (CSC)](https://www.chinesescholarshipcouncil.com/), working with [Prof. Pietro Zanuttigh](https://lttm.dei.unipd.it/nuovo/staff/zanuttigh.html). 
 
 I was a Master student (2018.9-2021.3) educated at the Xidian University. I graduated with a bachelor's degree in School of Electronic Engineering from Xidian University, China. I'm a reviewer of [Displays](https://www.sciencedirect.com/journal/displays).
 
