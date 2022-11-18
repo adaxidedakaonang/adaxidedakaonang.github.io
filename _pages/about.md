@@ -8,48 +8,27 @@ redirect_from:
   - /about.html
 ---
 
-Ciao! I'm a 2nd-year PhD student in school of AI at Xidian University, Xian, China. My current research interest is continual learning in semantic segmentation. Now I'm a visiting student of University of Padova supported by China scholarship Council (CSC). 
+Ciao! I'm a 2nd-year PhD student in school of AI at Xidian University, Xian, China. My supervisor is [Prof. Niu Yi](https://web.xidian.edu.cn/niuyi/index.html). My current research interest is continual learning in semantic segmentation. Now I'm a visiting student of [LTTM](https://web.xidian.edu.cn/niuyi/index.html) at [UNIPD](https://www.unipd.it/) supported by [China scholarship Council (CSC)](https://www.chinesescholarshipcouncil.com/). 
 
-I was a Master student (2018.9-2021.3) educated at the Xidian University. I graduated with a bachelor's degree in School of Electronic Engineering from Xidian University, China. 
-
-
+I was a Master student (2018.9-2021.3) educated at the Xidian University. I graduated with a bachelor's degree in School of Electronic Engineering from Xidian University, China. I'm a reviewer of [Displays](https://www.sciencedirect.com/journal/displays).
 
 
-A data-driven personal website
+Publications
 ======
-Like many other Jekyll-based GitHub Pages templates, academicpages makes you separate the website's content from its form. The content & metadata of your website are in structured markdown files, while various other files constitute the theme, specifying how to transform that content & metadata into HTML pages. You keep these various markdown (.md), YAML (.yml), HTML, and CSS files in a public GitHub repository. Each time you commit and push an update to the repository, the [GitHub pages](https://pages.github.com/) service creates static HTML pages based on these files, which are hosted on GitHub's servers free of charge.
+### NL-CALIC Soft Decoding Using Strict Constrained Wide-Activated Recurrent Residual Network
+In this work, we propose a normalized Tanh activate strategy and a lightweight wide-activate recurrent structure to solve three key challenges of the soft-decoding of near-lossless codes: 1. How to add an effective strict constrained peak absolute error (PAE) boundary to the network; 2. An end-to-end solution that is suitable for different quantization steps (compression ratios). 3. Simple structure that favors the GPU and FPGA implementation. To this end, we propose a Wide-activated Recurrent structure with a normalized Tanh activate strategy for Soft-Decoding (WRSD). Experiments demonstrate the effectiveness of the proposed WRSD technique that WRSD outperforms better than the state-of-the-art soft decoders with less than 5% number of parameters, and every computation node of WRSD requires less than 64KB storage for the parameters which can be easily cached by most of the current consumer-level GPUs.
 
-Many of the features of dynamic content management systems (like Wordpress) can be achieved in this fashion, using a fraction of the computational resources and with far less vulnerability to hacking and DDoSing. You can also modify the theme to your heart's content without touching the content of your site. If you get to a point where you've broken something in Jekyll/HTML/CSS beyond repair, your markdown files describing your talks, publications, etc. are safe. You can rollback the changes or even delete the repository and start over -- just be sure to save the markdown files! Finally, you can also write scripts that process the structured data on the site, such as [this one](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb) that analyzes metadata in pages about talks to display [a map of every location you've given a talk](https://academicpages.github.io/talkmap.html).
+[paper here](https://ieeexplore.ieee.org/abstract/document/9662665)
 
-Getting started
-======
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Fork [this repository](https://github.com/academicpages/academicpages.github.io) by clicking the "fork" button in the top right. 
-1. Go to the repository's settings (rightmost item in the tabs that start with "Code", should be below "Unwatch"). Rename the repository "[your GitHub username].github.io", which will also be your website's URL.
-1. Set site-wide configuration and create content & metadata (see below -- also see [this set of diffs](http://archive.is/3TPas) showing what files were changed to set up [an example site](https://getorg-testacct.github.io) for a user with the username "getorg-testacct")
-1. Upload any files (like PDFs, .zip files, etc.) to the files/ directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.  
-1. Check status by going to the repository settings, in the "GitHub pages" section
+[code here](https://github.com/dota-109/WRSD)
 
-Site-wide configuration
-------
-The main configuration file for the site is in the base directory in [_config.yml](https://github.com/academicpages/academicpages.github.io/blob/master/_config.yml), which defines the content in the sidebars and other site-wide features. You will need to replace the default variables with ones about yourself and your site's github repository. The configuration file for the top menu is in [_data/navigation.yml](https://github.com/academicpages/academicpages.github.io/blob/master/_data/navigation.yml). For example, if you don't have a portfolio or blog posts, you can remove those items from that navigation.yml file to remove them from the header. 
+![images](/images/papers/WRSD/wrsd1.png)
 
-Create content & metadata
-------
-For site content, there is one markdown file for each type of content, which are stored in directories like _publications, _talks, _posts, _teaching, or _pages. For example, each talk is a markdown file in the [_talks directory](https://github.com/academicpages/academicpages.github.io/tree/master/_talks). At the top of each markdown file is structured data in YAML about the talk, which the theme will parse to do lots of cool stuff. The same structured data about a talk is used to generate the list of talks on the [Talks page](https://academicpages.github.io/talks), each [individual page](https://academicpages.github.io/talks/2012-03-01-talk-1) for specific talks, the talks section for the [CV page](https://academicpages.github.io/cv), and the [map of places you've given a talk](https://academicpages.github.io/talkmap.html) (if you run this [python file](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.py) or [Jupyter notebook](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb), which creates the HTML for the map based on the contents of the _talks directory).
+### Retinex-guided Channel-grouping based Patch Swap for Arbitrary Style Transfer (under review)
+The basic principle of the patch-matching based style transfer is to substitute the patches of the content image feature maps by the closest patches from the style image feature maps. Since the finite features harvested from one single aesthetic style image are inadequate to represent the rich textures of the content natural image, existing techniques treat the full-channel style feature patches as simple signal tensors and create new
+style feature patches via signal-level fusion. In this paper, we propose a Retinex theory guided, channel-grouping based patch swap technique to group the style feature maps into surface and texture channels, and the new features are created by the combination of these two groups, which can be regarded as a semantic-level fusion of the raw style features. In addition, we
+provide complementary fusion and multi-scale generation strategy to prevent unexpected black area and over-stylised results respectively. Experimental results demonstrate that the proposed method outperforms the existing techniques in providing more style-consistent textures while keeping the content fidelity.
 
-**Markdown generator**
+[conference verison here](https://ieeexplore.ieee.org/abstract/document/9190962)
 
-I have also created [a set of Jupyter notebooks](https://github.com/academicpages/academicpages.github.io/tree/master/markdown_generator
-) that converts a CSV containing structured data about talks or presentations into individual markdown files that will be properly formatted for the academicpages template. The sample CSVs in that directory are the ones I used to create my own personal website at stuartgeiger.com. My usual workflow is that I keep a spreadsheet of my publications and talks, then run the code in these notebooks to generate the markdown files, then commit and push them to the GitHub repository.
-
-How to edit your site's GitHub repository
-------
-Many people use a git client to create files on their local computer and then push them to GitHub's servers. If you are not familiar with git, you can directly edit these configuration and markdown files directly in the github.com interface. Navigate to a file (like [this one](https://github.com/academicpages/academicpages.github.io/blob/master/_talks/2012-03-01-talk-1.md) and click the pencil icon in the top right of the content preview (to the right of the "Raw | Blame | History" buttons). You can delete a file by clicking the trashcan icon to the right of the pencil icon. You can also create new files or upload files by navigating to a directory and clicking the "Create new file" or "Upload files" buttons. 
-
-Example: editing a markdown file for a talk
-![Editing a markdown file for a talk](/images/editing-talk.png)
-
-For more info
-------
-More info about configuring academicpages can be found in [the guide](https://academicpages.github.io/markdown/). The [guides for the Minimal Mistakes theme](https://mmistakes.github.io/minimal-mistakes/docs/configuration/) (which this theme was forked from) might also be helpful.
+![images](/images/papers/ST/style_transfer.png)
