@@ -19,6 +19,8 @@ Publications
 
 2. Retinex-guided Channel-grouping based Patch Swap for Arbitrary Style Transfer, *IEEE TRANSACTIONS ON MULTIMEDIA* (**TMM**), ***Chang Liu***, Mingming Ma, Yi Niu\*, Fu Li, Guangming Shi. ***(Finished on 2022.07, under review)***
 
-<a href="https://info.flagcounter.com/iFAx"><img src="https://s11.flagcounter.com/map/iFAx/size_m/txt_000000/border_CCCCCC/pageviews_0/viewers_0/flags_0/" alt="Flag Counter" border="0"></a>
+
+
+<a href="http://s01.flagcounter.com/more/Omh"><img src="https://s01.flagcounter.com/map/Omh/size_s/txt_000000/border_CCCCCC/pageviews_0/viewers_0/flags_0/" alt="Flag Counter" border="0"></a>
 
 
