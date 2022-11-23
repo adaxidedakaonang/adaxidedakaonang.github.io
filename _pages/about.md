@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Liu Chang, PhD, XDU"
+title: "Dr Chang Liu, XDU"
 ##Ciao! I’m 刘(Liu) 畅(Chang), from XDU, China!
 excerpt: "About me"
 author_profile: true
