@@ -3,7 +3,6 @@ title: "Retinex-guided Channel-grouping based Patch Swap for Arbitrary Style Tra
 collection: publications
 permalink: /publication/2010-10-01-paper-title-number-2
 date: 2022-07-10
-venue: 'Journal'
 paperurl: 'http://adaxidedakaonang.github.io/files/paper2.pdf'
 ---
 The basic principle of the patch-matching based style transfer is to substitute the patches of the content image feature maps by the closest patches from the style image feature maps. Since the finite features harvested from one single aesthetic style image are inadequate to represent the rich textures of the content natural image, existing techniques treat the full-channel style feature patches as simple signal tensors and create new
