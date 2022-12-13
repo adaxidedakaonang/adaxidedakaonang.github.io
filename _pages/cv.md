@@ -24,6 +24,7 @@ Skills
   * Keras
   * Tensorflow
 * C++
+* Qt
 * CUDA
 
 Publications
