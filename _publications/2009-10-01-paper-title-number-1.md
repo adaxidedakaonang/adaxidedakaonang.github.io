@@ -13,5 +13,11 @@ In this work, we propose a normalized Tanh activate strategy and a lightweight w
 
 [code here](https://github.com/dota-109/WRSD)
 
-
+## Performance
 ![images](/images/papers/WRSD/wrsd1.png)
+
+## Structure
+![images](/images/papers/WRSD/nta.png)
+![images](/images/papers/WRSD/wrsd_structure.png)
+## quality
+![images](/images/papers/WRSD/performance.png)

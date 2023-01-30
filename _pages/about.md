@@ -17,8 +17,11 @@ I was a Master student (2018.9-2021.3) educated at the Xidian University. I grad
 Publications
 ======
 1. NL-CALIC Soft Decoding Using Strict Constrained Wide-Activated Recurrent Residual Network,*IEEE TRANSACTIONS ON IMAGE PROCESSING* (**TIP**), Yi Niu\*, ***Chang Liu***, MingMing Ma, Fu Li, ZhiWen Chen, Guangming Shi. ***(Published on 2021.12)*** 
+![images](/images/papers/WRSD/wrsd_structure.png)
 
-2. Retinex-guided Channel-grouping based Patch Swap for Arbitrary Style Transfer, *IEEE TRANSACTIONS ON MULTIMEDIA* (**TMM**), ***Chang Liu***, Mingming Ma, Yi Niu\*, Fu Li, Guangming Shi. ***(Finished on 2022.07, under review)***
+
+1. Retinex-guided Channel-grouping based Patch Swap for Arbitrary Style Transfer, *IEEE TRANSACTIONS ON MULTIMEDIA* (**TMM**), ***Chang Liu***, Mingming Ma, Yi Niu\*, Fu Li, Guangming Shi. ***(Finished on 2022.07, under review)***  
+![images](/images/papers/ST/style_transfer.png)
 
 
 <script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=5h0oh8r28r6&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script>
