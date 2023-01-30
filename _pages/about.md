@@ -23,7 +23,7 @@ Publications
 1. Retinex-guided Channel-grouping based Patch Swap for Arbitrary Style Transfer, *IEEE TRANSACTIONS ON MULTIMEDIA* (**TMM**), ***Chang Liu***, Mingming Ma, Yi Niu\*, Fu Li, Guangming Shi. ***(Finished on 2022.07, under review)***  
 ![images](/images/papers/ST/style_transfer.png)
 
-Colaberations
+Collaborations
 ======
 1. A Lightweight Multi-Level Information Network for Multispectral and Hyperspectral Image Fusion, *Remote Sensing*, Mingming Ma, Yi Niu\*, **Chang Liu**, Fu Li, Guangming Shi. ***(Published on 2022.11)*** 
 ![images](/images/papers/RS/nn.jpg)
