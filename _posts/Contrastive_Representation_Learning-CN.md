@@ -237,6 +237,26 @@ It learns representations for visual inputs by maximizing agreement between diff
 
 ![img](./figs/SimCLR.png)
 
+1. 样本集中随机采样$N$个样本，对每个样本执行两种不同的数据增强操作，得到$2N$个增强后的样本。
+$\tilde{x}_i = t(x), \tilde{x}_j = t^{'}(x), t, t^{'}\sim T$
+其中上述两种不同的数据增强操作子 $t$ 和 $t^{'}$，采样于增强集合$T$中的同一系列。数据增强操作包括随机裁剪，带有随机翻转的尺寸缩放，颜色失真，以及高斯模糊。
+2. 给一正样本对，其他$2(N-1)$个数据点被认为是负样本。表达式可通过一基础编码器$f(\cdot)$给出:  
+   $h_i = f(\tilde{x}_i),  h_j = f(\tilde{x}_j)$
+3. 对比学习损失函数使用余弦相似度$sim(.,.)$定义。这里注意，损失函数并不直接针对表征空间$g(.)$，而是作用于该表征的额外一映射层。但最终只有表征$h$被用于下游任务中。  
+$z_i = g(h_i), z_j = g(h_j)$  
+$L_{SimCLR}^{(i,j)}=-log\frac{exp(sim(z_i,z_j)/\tau)}{\sum_{k=1}^{2N}\mathbb{I}_{k\neq i}exp(sim(z_i,z_k)/\tau)}$
+其中$\mathbb{I}_{k\neq i}$是指示函数: $1$ if $k\neq i$ $0$ otherwise。
+
+SimCLR需要很大的batch size来引入足够的负样本，以实现最终优秀的性能。
+
+![img](./figs/SimCLR_2.png)
+
+#### Barlow Twins
+**Barlow Twins** ([Zbontar et al.2021](https://arxiv.org/abs/2103.03230)) 将某一样本的两个失真版本输入同一网络来提取特征，同时试着令两组输出特征之间的互相关矩阵趋于单位阵。其目标在于使属于同一样本的不同失真版本的表征向量保持相似，同时最小化向量之间的冗余。
+![img](./figs/barlow-twins.png)  
+
+我们令$C$为计算得的由同一网络预测的不同输出间的互相关矩阵。其为方阵，尺寸等于特征网络输出的维度。矩阵$C_{ij}$中的每个条目为网络输出的，位于索引$i, j$和batch索引$b$的向量维度之间的余弦相似度。
+
 ### 内存银行
 
 ### 特征聚类
