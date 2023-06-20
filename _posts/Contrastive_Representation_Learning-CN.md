@@ -251,22 +251,8 @@ SimCLR需要很大的batch size来引入足够的负样本，以实现最终优�
 
 ![img](./figs/SimCLR_2.png)
 
-#### Barlow Twins
-**Barlow Twins** ([Zbontar et al.2021](https://arxiv.org/abs/2103.03230)) 将某一样本的两个失真版本输入同一网络来提取特征，同时试着令两组输出特征之间的互相关矩阵趋于单位阵。其目标在于使属于同一样本的不同失真版本的表征向量保持相似，同时最小化向量之间的冗余。
-![img](./figs/barlow-twins.png)  
-
-我们令$C$为计算得的由同一网络预测的不同输出间的互相关矩阵。其为方阵，尺寸等于特征网络输出的维度。矩阵$C_{ij}$中的每个条目为网络输出的，位于索引$i, j$和batch索引$b$的向量$\mathbf{z}_{b,i}^{A}$和$\mathbf{z}_{b,j}^{B}$维度之间的余弦相似度。其值域为$-1$（完全负相关）与$1$（完全相关）之间。  
-$L_{BT}=\underbrace{\sum_{i}(1-C_{ii})^2}_{不变项}+\lambda\underbrace{\sum_{i}\sum_{i\neq j}C_{ij}^2}_{减少冗余项}$
-
-其中 $C_{ij}=\frac{\sum_{b}\mathbf{z}_{b,i}^A\mathbf{z}_{b,j}^B}{\sqrt{\sum_{b}(\mathbf{z}_{b,i}^A)^2}\sqrt{\sum_{b}(\mathbf{z}_{b,j}^B)^2}}$
-
-Barlow Twins 在自监督学习方面的表现丝毫不弱于SOTA。它很自然地避免了琐碎的常数（比如，塌陷表征），并且对不同训练batch都很鲁棒$^*$。
->原文:It naturally avoids trivial constants (i.e. collapsed representations), and is robust to different training batch sizes.
-
-![img](./figs/barlow-twins-algo.png)
-
 #### BYOL
-与上述方法不同，**BYOL** (Bootstrap Your Own Latent; [Grill, et al 2020](https://arxiv.org/abs/2006.07733))在不使用负样本地情况下实现了SOTA性能。其依赖于两个神经网络，名为*在线*和*目标*网络，它们彼此交互并互相学习。目标网络（参数化为$\xi$）与在线网络（参数化为$\theta$）具有相同的结构，但使用了 polyak 均值权重，$\xi \leftarrow \tau \xi + (1-\tau)\theta$。
+与上述方法（SimCLR）不同，**BYOL** (Bootstrap Your Own Latent; [Grill, et al 2020](https://arxiv.org/abs/2006.07733))在不使用负样本地情况下实现了SOTA性能。其依赖于两个神经网络，名为*在线*和*目标*网络，它们彼此交互并互相学习。目标网络（参数化为$\xi$）与在线网络（参数化为$\theta$）具有相同的结构，但使用了 polyak 均值权重，$\xi \leftarrow \tau \xi + (1-\tau)\theta$。
 
 该方法旨在学习某一可被用于下游任务中的表征$y$。由$\theta$参数化的在线网络包含：
 * 编码器$f_\theta$
@@ -287,9 +273,52 @@ Barlow Twins 在自监督学习方面的表现丝毫不弱于SOTA。它很自然
 * 其对称损失$\tilde{\mathcal{L}}_\theta^{\mathbf{BYOL}}$可以通过交换$\mathbf{v}^{'}$和$\mathbf{v}$得到；即，将$\mathbf{v}^{'}$送入在线网络，$\mathbf{v}$送入目标网络。
 * 最终损失项为$\mathcal{L}_\theta^{\mathbf{BYOL}}+\tilde{\mathcal{L}}_\theta^{\mathbf{BYOL}}$，且只有$\theta$被优化。
 
-与现有多数基于对比学习的方法不同，BYOL不使用负样本。
+与现有多数基于对比学习的方法不同，BYOL不使用负样本。大多数自举法(Bootstrap approaches) 都依赖于伪标签或聚类索引，但是BYOL直接对潜在表征进行bootstrap。
+
+**没有**负样本，BYOL依然表现很好。Abe Fetterman & Josh Albrecht 的[博客](https://generallyintelligent.com/research/2020-08-24-understanding-self-supervised-contrastive-learning/)列出了两个关于复现BYOL的意外发现：
+1. 移除 batch normalization 后，BYOL 的性能与随机输出无异。
+2. Batch normalization操作隐式带入了对比学习。他们相信使用负样本对避免模型崩塌具有重要作用（比如，如果你使用全零向量表示每个数据点该怎么办？）。Batch normalization 隐式地带入了对负样本地依赖，因为不论一组输入有多相似，输出值总会被重分布（re-distributed, 服从$\sim\mathcal{N}(0,1)$）。因此 batch normalization避免了模型崩塌。
+
+#### Barlow Twins
+**Barlow Twins** ([Zbontar et al.2021](https://arxiv.org/abs/2103.03230)) 将某一样本的两个失真版本输入同一网络来提取特征，同时试着令两组输出特征之间的互相关矩阵趋于单位阵。其目标在于使属于同一样本的不同失真版本的表征向量保持相似，同时最小化向量之间的冗余。
+![img](./figs/barlow-twins.png)  
+
+我们令$C$为计算得的由同一网络预测的不同输出间的互相关矩阵。其为方阵，尺寸等于特征网络输出的维度。矩阵$C_{ij}$中的每个条目为网络输出的，位于索引$i, j$和batch索引$b$的向量$\mathbf{z}_{b,i}^{A}$和$\mathbf{z}_{b,j}^{B}$维度之间的余弦相似度。其值域为$-1$（完全负相关）与$1$（完全相关）之间。  
+$L_{BT}=\underbrace{\sum_{i}(1-C_{ii})^2}_{不变项}+\lambda\underbrace{\sum_{i}\sum_{i\neq j}C_{ij}^2}_{减少冗余项}$
+
+其中 $C_{ij}=\frac{\sum_{b}\mathbf{z}_{b,i}^A\mathbf{z}_{b,j}^B}{\sqrt{\sum_{b}(\mathbf{z}_{b,i}^A)^2}\sqrt{\sum_{b}(\mathbf{z}_{b,j}^B)^2}}$
+
+Barlow Twins 在自监督学习方面的表现丝毫不弱于SOTA。它很自然地避免了琐碎的常数（比如，塌陷表征），并且对不同训练batch都很鲁棒$^*$。
+>原文:It naturally avoids trivial constants (i.e. collapsed representations), and is robust to different training batch sizes.
+
+![img](./figs/barlow-twins-algo.png)
 
 ### 内存银行
+
+计算每一个batch内大量负样本embedding的开销很大。一个通用方案是把表征存储在内存，以廉价的计算方式代替过时数据。
+
+#### 带有内存银行的实例判别器
+
+**Instance contrastive learning** ([Wu et al, 2018](https://arxiv.org/abs/1805.01978v1))将逐类监督发挥到了极致。其将每个实例作为自身的独特类别。这意味着在训练集中，类别的数量就等于样本的数量。因此，尽管用这些heads很难去训练softmax层，但其可被NCE近似。
+
+![img](./figs/instance-level-discrimination.png)
+
+令$\mathbf{v}=f_\theta(x)$为一需习得的嵌入函数，向量满足$|\mathbf{v}|=1$。 一无参分类器预测样本$\mathbf{v}$属于类别$i$的概率：  
+$P(C=i|\mathbf{v})=\frac{\text{exp}(\mathbf{v}_i^\top\mathbf{v}/\tau)}{\sum_{j=1}^{n}\text{exp}(\mathbf{v}_j^\top\mathbf{v}/\tau)}$
+
+$\tau$是温度系数
+
+与每次计算所有样本的表征不同，他们使用**内存银行**来存储过去迭代中生成的样本表征。令$V={\mathbf{v}_i}$ 表示内存银行，$\mathbf{f}_i=f_\theta(\mathbf{x}_i)$ 为前向网络生成的特征。当比较成对相似性时，我们可以使用来自内存银行的表征$\mathbf{v}_i$，而不是来自网络的特征$\mathbf{f}_i$。
+
+定义在理论上要求访问所有样本的表征，但在实际中代价太大。事实上我们可以仅使用一组子集${j_k}_{k=1}^M$，通过蒙特卡罗近似来估计。  
+$P(i|\mathbf{v})=\frac{\text{exp}(\mathbf{v}^{\top}\mathbf{f}_i/\tau)}{\sum_{j=1}^N\text{exp}(\mathbf{v}_j^\top\mathbf{f}_i/\tau)}\simeq \frac{N}{M}\frac{\text{exp}(\mathbf{v}^{\top}\mathbf{f}_i/\tau)}{\sum_{k=1}^M\text{exp}(\mathbf{v}_{jk}^\top\mathbf{f}_i/\tau)}$
+
+由于每个类别只有一个实例，因此训练很不稳定，且波动。为了提高训练平滑度，他们为正样本引入了一个一个额外优化项，其基于[近似最优算法](https://web.stanford.edu/~boyd/papers/prox_algs.html)。最终的NCE损失函数为：  
+$\mathcal{L}_{\text{instance}}=-\mathbb{E}_{Pd}[\text{log} h(i,\mathbf{v}_i^{(t-1)})-\lambda||\mathbf{v}_i^{(t)}-\mathbf{v}_i^{(t-1)}||_2^2]-M\mathbf{E}_{Pn}[log(1-h(i,\mathbf{v}^{'(t-1)}))]$  
+$h(i,\mathbf{v})=\frac{P(i|\mathbf{v})}{P(i|\mathbf{v})+MP_n(i)}$  
+其中，噪声分布为均匀分布$P_n=1/N$, $\{\mathbf{v}^{(t-1)}\}$为来自于先前迭代过程中存储在银行内的embeddings。$||\mathbf{v}_i^{(t)}-\mathbf{v}_i^{(t-1)}||_2^2$的差值会随着学得的embeddings收敛而逐渐消失。
+
+#### MoCo & MoCo-V2
 
 ### 特征聚类
 
