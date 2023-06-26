@@ -318,6 +318,8 @@ $\mathcal{L}_{\text{instance}}=-\mathbb{E}_{Pd}[\text{log} h(i,\mathbf{v}_i^{(t-
 $h(i,\mathbf{v})=\frac{P(i|\mathbf{v})}{P(i|\mathbf{v})+MP_n(i)}$  
 其中，噪声分布为均匀分布$P_n=1/N$, $\{\mathbf{v}^{(t-1)}\}$为来自于先前迭代过程中存储在银行内的embeddings。$||\mathbf{v}_i^{(t)}-\mathbf{v}_i^{(t-1)}||_2^2$的差值会随着学得的embeddings收敛而逐渐消失。
 
+
+
 #### MoCo & MoCo-V2
 
 ### 特征聚类
